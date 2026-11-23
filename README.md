@@ -222,7 +222,7 @@ This project is collaboratively developed by our group as part of the Operating 
 |---|---|---|
 | 1 | Fahad Ahmad | [@FahadAhmad06](https://github.com/FahadAhmad06) |
 | 2 | Muhammad Afnan | [@muhammadAfnan2005](https://github.com/muhammadAfnan2005) |
-| 3 | Subhan Khan | Add GitHub Profile |
+| 3 | Subhan Khan | [@subhankahn-it](https://github.com/subhankhan-it) |
 
 ## 🤝 Team Collaboration
 
