@@ -1,0 +1,35 @@
+
+# CMake Build Files
+build/
+out/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Compiled C++ Files
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# CMake Generated Files
+Testing/
+CTestTestfile.cmake
+
+# IDE Files
+.vscode/
+.idea/
+
+# Temporary Files
+*.tmp
+*.log
+*.bak
+
+# OS Files
+.DS_Store
+Thumbs.db
