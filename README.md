@@ -20,6 +20,8 @@
 
 The project focuses on understanding and visualizing fundamental memory management concepts used by modern operating systems. It provides a graphical environment where users can explore different memory allocation strategies, understand paging and address translation, and simulate various page replacement algorithms.
 
+The application uses a **C++ backend** for algorithm execution and a **Python GUI built with CustomTkinter** for user interaction and visualization.
+
 Through interactive simulations and visual representations, the application aims to make complex operating system concepts easier to understand and analyze.
 
 ## ✨ Features
@@ -45,7 +47,8 @@ This module demonstrates how an operating system allocates memory to processes u
 | **Best Fit** | Allocates the smallest available block that can accommodate the process. |
 | **Worst Fit** | Allocates the largest available memory block. |
 
-**Planned functionality:**
+**Implemented functionality:**
+
 - Input memory block sizes.
 - Input process sizes.
 - Visualize memory allocation.
@@ -56,7 +59,8 @@ This module demonstrates how an operating system allocates memory to processes u
 
 This module demonstrates paging, where logical memory is divided into pages and physical memory is divided into frames.
 
-**Planned functionality:**
+**Implemented functionality:**
+
 - Logical address input.
 - Page number calculation.
 - Offset calculation.
@@ -74,7 +78,8 @@ This module demonstrates how an operating system manages pages when available ph
 | **LRU** | Replaces the least recently used page. |
 | **Optimal** | Replaces the page that will not be needed for the longest time in the future. |
 
-**Planned functionality:**
+**Implemented functionality:**
+
 - Page reference string input.
 - Frame allocation visualization.
 - Step-by-step page replacement.
@@ -84,9 +89,9 @@ This module demonstrates how an operating system manages pages when available ph
 
 ## 🎨 Graphical User Interface
 
-The project will include a graphical interface designed to provide an interactive learning experience.
+The project includes a graphical interface designed to provide an interactive learning experience.
 
-**Planned GUI sections:**
+**GUI sections:**
 
 - Main Dashboard
 - Memory Allocation Simulator
@@ -95,53 +100,122 @@ The project will include a graphical interface designed to provide an interactiv
 - Page Replacement Simulator
 - Algorithm Comparison
 - Results and Statistics
+- About & Team
 
-The GUI will allow users to provide inputs, execute simulations, and observe how each algorithm manages memory.
+The GUI allows users to provide inputs, execute simulations, and observe how each algorithm manages memory.
 
 ## 🗂️ Project Structure
 
-The following is the proposed directory structure for organizing the project modules.
+The project is organized into two main components: a C++ backend and a Python frontend.
 
 ```text
-OS-Memory-Management-Simulator/
+OS/
 │
 ├── README.md
+├── .gitignore
 │
-├── src/
-│   ├── allocation/
-│   │   ├── first_fit.cpp
-│   │   ├── best_fit.cpp
-│   │   └── worst_fit.cpp
+├── backend/
+│   ├── CMakeLists.txt
 │   │
-│   ├── paging/
-│   │   └── address_translation.cpp
+│   ├── include/
+│   │   ├── common/
+│   │   │   └── json_handler.h
+│   │   │
+│   │   ├── comparison/
+│   │   │   ├── allocation_comparison.h
+│   │   │   └── page_replacement_comparison.h
+│   │   │
+│   │   ├── page_replacement/
+│   │   │   ├── fifo.h
+│   │   │   ├── lru.h
+│   │   │   └── optimal.h
+│   │   │
+│   │   └── paging/
+│   │       └── paging.h
 │   │
-│   ├── page_replacement/
-│   │   ├── fifo.cpp
-│   │   ├── lru.cpp
-│   │   └── optimal.cpp
+│   ├── src/
+│   │   ├── allocation/
+│   │   │   ├── first_fit.cpp
+│   │   │   ├── best_fit.cpp
+│   │   │   └── worst_fit.cpp
+│   │   │
+│   │   ├── common/
+│   │   │   └── json_handler.cpp
+│   │   │
+│   │   ├── comparison/
+│   │   │   ├── allocation_comparison.cpp
+│   │   │   └── page_replacement_comparison.cpp
+│   │   │
+│   │   ├── page_replacement/
+│   │   │   ├── fifo.cpp
+│   │   │   ├── lru.cpp
+│   │   │   └── optimal.cpp
+│   │   │
+│   │   ├── paging/
+│   │   │   └── paging.cpp
+│   │   │
+│   │   └── main.cpp
 │   │
-│   └── gui/
+│   └── build/                 
 │
-├── screenshots/
-│
-├── docs/
-│
-└── .gitignore
+└── frontend/
+    ├── assets/
+    │   └── icons/
+    │       ├── generator.py
+    │       ├── Dashboard1.png
+    │       ├── Dashboard2.png
+    │       ├── Memory_Allocation1.png
+    │       ├── Memory_Allocation2.png
+    │       ├── Pagging1.png
+    │       ├── Pagging2.png
+    │       ├── Page_Replacement1.png
+    │       ├── Page_Replacement2.png
+    │       ├── Comparison1.png
+    │       ├── Comparison2.png
+    │       ├── Comparison3.png
+    │       ├── about1.png
+    │       └── about12.png
+    │
+    ├── components/
+    │   ├── __init__.py
+    │   ├── buttons.py
+    │   ├── cards.py
+    │   ├── charts.py
+    │   ├── header.py
+    │   ├── memory_visualization.py
+    │   ├── page_frame_visualization.py
+    │   ├── paging_visualization.py
+    │   └── sidebar.py
+    │
+    ├── pages/
+    │   ├── __init__.py
+    │   ├── about.py
+    │   ├── comparison.py
+    │   ├── home.py
+    │   ├── memory_allocation.py
+    │   ├── page_replacement.py
+    │   └── paging.py
+    │
+    ├── backend_bridge.py
+    ├── config.py
+    ├── main.py
+    ├── requirements.txt
+    └── venv/                  
 ```
 
-*Note: This is a suggested structure. Actual folders and files may vary depending on the implementation and GUI framework.*
+**Note:** The `build/`, `venv/`, and `__pycache__/` directories are generated locally and are excluded from Git using `.gitignore`.
 
 ## 🛠️ Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| Programming Language | Core algorithm implementation |
-| GUI Framework | Graphical user interface |
+| C++ | Backend algorithm implementation |
+| Python | Frontend application |
+| CustomTkinter | Graphical user interface |
+| CMake | C++ build system |
+| JSON | Backend and frontend communication |
 | Git | Version control |
 | GitHub | Team collaboration and source code management |
-
-*The exact technologies will be documented once finalized.*
 
 ## 🚀 Getting Started
 
@@ -152,9 +226,10 @@ Follow these steps to download the project and run it on your local machine.
 Before running the project, make sure you have:
 
 - Git installed.
-- The required programming language installed.
-- A suitable code editor or IDE.
-- Required GUI framework and dependencies.
+- Python 3 installed.
+- C++ compiler (G++) installed.
+- CMake installed.
+- Required Python dependencies.
 
 ### 1. Clone the Repository
 
@@ -176,39 +251,91 @@ cd OS-Memory-Management-Simulator
 code .
 ```
 
-### 4. Install Dependencies
+### 4. Build the C++ Backend
 
-Install the required dependencies according to the selected programming language and GUI framework.
+```bash
+cd backend
+cmake -S . -B build
+cmake --build build
+```
 
-### 5. Run the Application
+### 5. Set Up the Python Frontend
 
-Execute the main application file using the appropriate compiler or runtime.
+```bash
+cd ../frontend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-*Detailed installation and execution commands will be added after the development environment is finalized.*
+### 6. Run the Application
+
+```bash
+python3 main.py
+```
+
+**Note:** Make sure the backend executable path is correctly configured in `frontend/config.py` and `frontend/backend_bridge.py`.
 
 ## 📸 Screenshots & Preview
 
-Screenshots of the application and its simulations will be added as development progresses.
+Screenshots of the actual application interface and its simulations.
 
-| Module | Preview |
-|---|---|
-| Main Dashboard | Coming Soon |
-| Memory Allocation | Coming Soon |
-| Paging & Address Translation | Coming Soon |
-| Page Replacement | Coming Soon |
-| Algorithm Comparison | Coming Soon |
+### 🏠 Main Dashboard
+
+<p align="center">
+  <img src="frontend/assets/icons/Dashboard1.png" width="49%" alt="Dashboard 1">
+  <img src="frontend/assets/icons/Dashboard2.png" width="49%" alt="Dashboard 2">
+</p>
+
+### 🧱 Memory Allocation
+
+<p align="center">
+  <img src="frontend/assets/icons/Memory Allocation1.png" width="49%" alt="Memory Allocation 1">
+  <img src="frontend/assets/icons/Memory Allocation2.png" width="49%" alt="Memory Allocation 2">
+</p>
+
+### 🔄 Paging & Address Translation
+
+<p align="center">
+  <img src="frontend/assets/icons/Pagging1.png" width="49%" alt="Paging 1">
+  <img src="frontend/assets/icons/Pagging2.png" width="49%" alt="Paging 2">
+</p>
+
+### 📑 Page Replacement
+
+<p align="center">
+  <img src="frontend/assets/icons/Page Replacement1.png" width="49%" alt="Page Replacement 1">
+  <img src="frontend/assets/icons/Page Replacement2.png" width="49%" alt="Page Replacement 2">
+</p>
+
+### 📊 Algorithm Comparison
+
+<p align="center">
+  <img src="frontend/assets/icons/Comparison1.png" width="32%" alt="Comparison 1">
+  <img src="frontend/assets/icons/Comparison2.png" width="32%" alt="Comparison 2">
+  <img src="frontend/assets/icons/Comparison3.png" width="32%" alt="Comparison 3">
+</p>
+
+### ℹ️ About & Team
+
+<p align="center">
+  <img src="frontend/assets/icons/about1.png" width="49%" alt="About 1">
+  <img src="frontend/assets/icons/about12.png" width="49%" alt="About 2">
+</p>
 
 ## 📊 Performance Analysis
 
-The simulator aims to provide a practical comparison of the implemented algorithms.
+The simulator provides a practical comparison of the implemented algorithms.
 
 **Memory Allocation Analysis**
+
 - Memory block utilization.
 - Process allocation results.
 - Remaining memory.
 - Allocation success and failure.
 
 **Page Replacement Analysis**
+
 - Total page faults.
 - Total page hits.
 - Page fault ratio.
@@ -222,7 +349,7 @@ This project is collaboratively developed by our group as part of the Operating 
 |---|---|---|
 | 1 | Fahad Ahmad | [@FahadAhmad06](https://github.com/FahadAhmad06) |
 | 2 | Muhammad Afnan | [@muhammadAfnan2005](https://github.com/muhammadAfnan2005) |
-| 3 | Subhan Khan | [@subhankahn-it](https://github.com/subhankhan-it) |
+| 3 | Subhan Khan | [@subhankahn-it](https://github.com/subhankahn-it) |
 
 ## 🤝 Team Collaboration
 
