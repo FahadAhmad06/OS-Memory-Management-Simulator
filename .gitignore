@@ -1,35 +1,123 @@
 
-# CMake Build Files
-build/
-out/
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
-compile_commands.json
 
-# Compiled C++ Files
-*.o
-*.obj
-*.a
-*.so
-*.dll
-*.exe
-*.out
+# ==========================================
+# OS MEMORY MANAGEMENT SIMULATOR
+# C++ BACKEND + PYTHON FRONTEND
+# ==========================================
 
-# CMake Generated Files
-Testing/
-CTestTestfile.cmake
+# ---------- C++ BACKEND ----------
 
-# IDE Files
+# Build folders
+backend/build/
+backend/build-*/
+backend/cmake-build-*/
+backend/bin/
+backend/obj/
+backend/debug/
+backend/release/
+
+# CMake generated files
+backend/CMakeFiles/
+backend/CMakeCache.txt
+backend/cmake_install.cmake
+backend/CTestTestfile.cmake
+backend/Testing/
+backend/compile_commands.json
+backend/CMakeUserPresets.json
+
+# Compiled files
+backend/**/*.o
+backend/**/*.obj
+backend/**/*.a
+backend/**/*.lib
+backend/**/*.so
+backend/**/*.dll
+backend/**/*.dylib
+backend/**/*.exe
+backend/**/*.out
+
+# Debug files
+backend/**/*.pdb
+backend/**/*.ilk
+backend/**/*.pch
+backend/**/*.gch
+
+# Coverage
+backend/**/*.gcda
+backend/**/*.gcno
+backend/**/*.gcov
+
+# ---------- PYTHON FRONTEND ----------
+
+# Virtual environments
+frontend/venv/
+frontend/.venv/
+frontend/env/
+frontend/ENV/
+
+# Python cache
+frontend/__pycache__/
+frontend/**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Python build
+frontend/build/
+frontend/dist/
+frontend/*.egg-info/
+
+# Testing
+frontend/.pytest_cache/
+frontend/.tox/
+frontend/.nox/
+frontend/.coverage
+frontend/htmlcov/
+
+# Jupyter
+frontend/.ipynb_checkpoints/
+
+# ---------- ENVIRONMENT & SECRETS ----------
+
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# ---------- IDE ----------
+
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Temporary Files
-*.tmp
+# ---------- LOGS & TEMP ----------
+
 *.log
+*.tmp
 *.bak
+logs/
+tmp/
+temp/
 
-# OS Files
+# ---------- DATABASE ----------
+
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ---------- SYSTEM FILES ----------
+
 .DS_Store
 Thumbs.db
+Desktop.ini
+
+# Python cache
+__pycache__/
+*.py[cod]

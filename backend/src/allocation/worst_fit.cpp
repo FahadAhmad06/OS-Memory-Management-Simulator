@@ -166,6 +166,12 @@ AllocationSummary run_worst_fit(
         chosen.size = req.size;
         chosen.internal_fragmentation = 0;
 
+        entry.allocated = true;
+        entry.block_id = chosen.id;
+        entry.start_address = chosen.start_address;
+        entry.block_size = chosen.size;
+        entry.internal_fragmentation = chosen.internal_fragmentation;
+
         if (original_size > req.size) {
             MemoryBlock remainder;
             remainder.id = new_id;
@@ -177,12 +183,6 @@ AllocationSummary run_worst_fit(
                 remainder
             );
         }
-
-        entry.allocated = true;
-        entry.block_id = chosen.id;
-        entry.start_address = chosen.start_address;
-        entry.block_size = chosen.size;
-        entry.internal_fragmentation = chosen.internal_fragmentation;
         entry.reason = "Allocated using Worst Fit.";
         ++summary.successful_allocations;
         summary.results.push_back(entry);
